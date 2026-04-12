@@ -1,1 +1,200 @@
-<!DOCTYPE html><html><head><title>DevOps Capstone</title></head><body><h1>Cloud-Native TaskApp - In Progress</h1><p>By Ayodave | Built with Kubernetes, Terraform, AWS</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud-Native TaskApp | DevOps Capstone</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0d1117;color:#e6edf3}
+header{background:#161b22;border-bottom:1px solid #30363d;padding:2rem;text-align:center}
+header h1{font-size:2rem;color:#58a6ff;margin-bottom:.5rem}
+header p{color:#8b949e}
+.badges{display:flex;gap:8px;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.badge{background:#21262d;border:1px solid #30363d;border-radius:20px;padding:4px 12px;font-size:12px;color:#58a6ff}
+.container{max-width:900px;margin:0 auto;padding:2rem}
+.section{margin-bottom:2rem}
+.section h2{color:#58a6ff;font-size:1.2rem;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid #30363d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:1.2rem}
+.card h3{font-size:.95rem;margin-bottom:.8rem;color:#e6edf3}
+.item{display:flex;align-items:center;gap:8px;font-size:.85rem;margin-bottom:.4rem;color:#8b949e}
+.done{width:8px;height:8px;border-radius:50%;background:#3fb950;flex-shrink:0}
+.inprogress{width:8px;height:8px;border-radius:50%;background:#d29922;flex-shrink:0}
+.pending{width:8px;height:8px;border-radius:50%;background:#30363d;flex-shrink:0}
+.arch{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:1.5rem;font-family:monospace;font-size:.8rem;color:#8b949e;line-height:1.8;overflow-x:auto}
+.blue{color:#58a6ff}.green{color:#3fb950}.yellow{color:#d29922}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:.5rem}
+.tech{background:#21262d;border:1px solid #30363d;border-radius:6px;padding:.6rem;text-align:center;font-size:.8rem;color:#8b949e}
+footer{text-align:center;padding:2rem;color:#8b949e;font-size:.85rem;border-top:1px solid #30363d;margin-top:2rem}
+a{color:#58a6ff;text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+<h1>Cloud-Native TaskApp Deployment</h1>
+<p>Production Kubernetes on AWS — DevOps Capstone Project</p>
+<div class="badges">
+<span class="badge">Kubernetes v1.28</span>
+<span class="badge">Terraform v1.9.8</span>
+<span class="badge">Kops v1.28.4</span>
+<span class="badge">Docker v29.1</span>
+<span class="badge">Helm v3.20</span>
+<span class="badge">In Progress</span>
+</div>
+</header>
+<div class="container">
+
+<div class="section">
+<h2>Project Overview</h2>
+<div class="card">
+<p style="color:#8b949e;line-height:1.8;font-size:.9rem">
+Migrating a containerized TaskApp (React frontend, Flask backend, PostgreSQL)
+from local Minikube to production-grade AWS infrastructure using Kops for
+Kubernetes cluster management and Terraform for Infrastructure as Code.
+Features high availability across 3 AWS Availability Zones, automated SSL/TLS,
+and zero single points of failure.
+</p>
+</div>
+</div>
+
+<div class="section">
+<h2>Build Progress</h2>
+<div class="grid">
+
+<div class="card">
+<h3>Phase 1 — Environment Setup</h3>
+<div class="item"><span class="done"></span>Ubuntu WSL2 configured</div>
+<div class="item"><span class="done"></span>AWS CLI v2.34 installed</div>
+<div class="item"><span class="done"></span>Terraform v1.9.8 installed</div>
+<div class="item"><span class="done"></span>kubectl v1.28.8 installed</div>
+<div class="item"><span class="done"></span>Kops v1.28.4 installed</div>
+<div class="item"><span class="done"></span>Helm v3.20 installed</div>
+<div class="item"><span class="done"></span>Docker v29.1 installed</div>
+<div class="item"><span class="done"></span>Minikube v1.38 installed</div>
+<div class="item"><span class="done"></span>kubeseal v0.26 installed</div>
+<div class="item"><span class="done"></span>GitHub SSH connected</div>
+<div class="item"><span class="done"></span>Repo structure created</div>
+</div>
+
+<div class="card">
+<h3>Phase 2 — AWS Infrastructure</h3>
+<div class="item"><span class="inprogress"></span>IAM users setup</div>
+<div class="item"><span class="pending"></span>Terraform VPC module</div>
+<div class="item"><span class="pending"></span>Terraform IAM module</div>
+<div class="item"><span class="pending"></span>Terraform DNS module</div>
+<div class="item"><span class="pending"></span>S3 remote state backend</div>
+<div class="item"><span class="pending"></span>Route53 hosted zone</div>
+<div class="item"><span class="pending"></span>terraform validate</div>
+<div class="item"><span class="pending"></span>terraform plan</div>
+</div>
+
+<div class="card">
+<h3>Phase 3 — Kubernetes Cluster</h3>
+<div class="item"><span class="pending"></span>Kops cluster spec</div>
+<div class="item"><span class="pending"></span>Multi-master config 3 AZ</div>
+<div class="item"><span class="pending"></span>Private topology</div>
+<div class="item"><span class="pending"></span>Calico CNI configured</div>
+<div class="item"><span class="pending"></span>EBS CSI driver</div>
+<div class="item"><span class="pending"></span>etcd backups to S3</div>
+<div class="item"><span class="pending"></span>kops validate cluster</div>
+</div>
+
+<div class="card">
+<h3>Phase 4 — Application</h3>
+<div class="item"><span class="pending"></span>PostgreSQL + PVC</div>
+<div class="item"><span class="pending"></span>Flask backend deployed</div>
+<div class="item"><span class="pending"></span>React frontend deployed</div>
+<div class="item"><span class="pending"></span>Sealed Secrets</div>
+<div class="item"><span class="pending"></span>NGINX Ingress</div>
+<div class="item"><span class="pending"></span>cert-manager SSL</div>
+<div class="item"><span class="pending"></span>Live HTTPS URL</div>
+</div>
+
+<div class="card">
+<h3>Phase 5 — Security</h3>
+<div class="item"><span class="pending"></span>Network policies</div>
+<div class="item"><span class="pending"></span>IAM least privilege</div>
+<div class="item"><span class="pending"></span>Private subnet topology</div>
+<div class="item"><span class="pending"></span>No secrets in Git</div>
+<div class="item"><span class="pending"></span>HA failover tested</div>
+<div class="item"><span class="pending"></span>Pod security contexts</div>
+</div>
+
+<div class="card">
+<h3>Phase 6 — Documentation</h3>
+<div class="item"><span class="pending"></span>architecture.md</div>
+<div class="item"><span class="pending"></span>runbook.md</div>
+<div class="item"><span class="pending"></span>cost-analysis.md</div>
+<div class="item"><span class="pending"></span>README.md complete</div>
+<div class="item"><span class="pending"></span>Demo video recorded</div>
+</div>
+
+</div>
+</div>
+
+<div class="section">
+<h2>Architecture</h2>
+<div class="arch">
+<span class="blue">Internet</span>
+    |
+    +-- <span class="green">Route53</span> (ayodave.is-a.dev --&gt; NLB)
+    |
+    +-- <span class="green">AWS NLB + NGINX Ingress</span> (HTTPS:443)
+    |
+    +-- <span class="blue">VPC 10.0.0.0/16</span>
+          |
+          +-- <span class="yellow">Public Subnets x3 AZ</span>
+          |   +-- NAT Gateways (one per AZ)
+          |
+          +-- <span class="yellow">Private Subnets x3 AZ</span>
+                |
+                +-- K8s Masters x3 (one per AZ)
+                +-- K8s Workers x3 (one per AZ)
+                      |
+                      +-- <span class="green">Frontend</span> (React, 2+ replicas)
+                      +-- <span class="green">Backend</span> (Flask, 2+ replicas)
+                      +-- <span class="green">PostgreSQL</span> (EBS PersistentVolume)
+</div>
+</div>
+
+<div class="section">
+<h2>Tech Stack</h2>
+<div class="tech-grid">
+<div class="tech">AWS</div>
+<div class="tech">Terraform</div>
+<div class="tech">Kubernetes</div>
+<div class="tech">Kops</div>
+<div class="tech">Helm</div>
+<div class="tech">Docker</div>
+<div class="tech">cert-manager</div>
+<div class="tech">NGINX</div>
+<div class="tech">Sealed Secrets</div>
+<div class="tech">PostgreSQL</div>
+<div class="tech">React</div>
+<div class="tech">Flask</div>
+</div>
+</div>
+
+<div class="section">
+<h2>Repository</h2>
+<div class="card">
+<div class="item" style="margin-bottom:.8rem">
+<span class="done"></span>
+<a href="https://github.com/Ayodave/capstone-devops-taskapp" target="_blank">
+github.com/Ayodave/capstone-devops-taskapp
+</a>
+</div>
+<p style="color:#8b949e;font-size:.85rem;line-height:1.6">
+Infrastructure as Code repository containing Terraform modules,
+Kops cluster specifications, Kubernetes manifests, and full documentation.
+</p>
+</div>
+</div>
+
+</div>
+<footer>
+<p>Built by <a href="https://github.com/Ayodave">Ayodave</a> · DevOps Capstone Project · 2026</p>
+</footer>
+</body>
+</html>
