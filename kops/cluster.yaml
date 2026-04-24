@@ -1,7 +1,7 @@
 apiVersion: kops.k8s.io/v1alpha2
 kind: Cluster
 metadata:
-  name: taskapp.ayodave.is-a.dev
+  name: taskapp.k8s.local
 spec:
   api:
     loadBalancer:
@@ -10,8 +10,7 @@ spec:
     rbac: {}
   channel: stable
   cloudProvider: aws
-  configBase: s3://taskapp-kops-state-276945910356/taskapp.ayodave.is-a.dev
-  dnsZone: ayodave.is-a.dev
+  configBase: s3://taskapp-kops-state-276945910356/taskapp.k8s.local
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
@@ -21,12 +20,8 @@ spec:
       name: b
     - instanceGroup: master-us-east-1c
       name: c
-    manager:
-      backupRetentionDays: 90
     memoryRequest: 100Mi
     name: main
-    backups:
-      backupStore: s3://taskapp-kops-state-276945910356/taskapp.ayodave.is-a.dev/backups/etcd/main
   - cpuRequest: 100m
     etcdMembers:
     - instanceGroup: master-us-east-1a
@@ -45,40 +40,46 @@ spec:
   kubernetesApiAccess:
   - 0.0.0.0/0
   kubernetesVersion: 1.28.8
-  masterPublicName: api.taskapp.ayodave.is-a.dev
   networkCIDR: 10.0.0.0/16
+  networkID: vpc-0411bf648bd0869ec
   networking:
     calico: {}
   nonMasqueradeCIDR: 100.64.0.0/10
   sshAccess:
   - 0.0.0.0/0
   topology:
-    dns:
-      type: Public
     masters: private
     nodes: private
+    dns:
+      type: Private
   subnets:
   - cidr: 10.0.0.0/24
+    id: subnet-0e4aa1cf6c06d4bda
     name: us-east-1a
     type: Public
     zone: us-east-1a
   - cidr: 10.0.1.0/24
+    id: subnet-04bd0330c4db90b95
     name: us-east-1b
     type: Public
     zone: us-east-1b
   - cidr: 10.0.2.0/24
+    id: subnet-020b6926ac357f625
     name: us-east-1c
     type: Public
     zone: us-east-1c
   - cidr: 10.0.10.0/24
+    id: subnet-04533ff761d2fbf20
     name: us-east-1a-private
     type: Private
     zone: us-east-1a
   - cidr: 10.0.11.0/24
+    id: subnet-0dcb400feac962910
     name: us-east-1b-private
     type: Private
     zone: us-east-1b
   - cidr: 10.0.12.0/24
+    id: subnet-085fa37cc3fa8e7a1
     name: us-east-1c-private
     type: Private
     zone: us-east-1c
@@ -87,7 +88,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   labels:
-    kops.k8s.io/cluster: taskapp.ayodave.is-a.dev
+    kops.k8s.io/cluster: taskapp.k8s.local
   name: master-us-east-1a
 spec:
   image: ami-0c101f26f147fa7fd
@@ -102,7 +103,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   labels:
-    kops.k8s.io/cluster: taskapp.ayodave.is-a.dev
+    kops.k8s.io/cluster: taskapp.k8s.local
   name: master-us-east-1b
 spec:
   image: ami-0c101f26f147fa7fd
@@ -117,7 +118,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   labels:
-    kops.k8s.io/cluster: taskapp.ayodave.is-a.dev
+    kops.k8s.io/cluster: taskapp.k8s.local
   name: master-us-east-1c
 spec:
   image: ami-0c101f26f147fa7fd
@@ -132,7 +133,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   labels:
-    kops.k8s.io/cluster: taskapp.ayodave.is-a.dev
+    kops.k8s.io/cluster: taskapp.k8s.local
   name: nodes-us-east-1a
 spec:
   image: ami-0c101f26f147fa7fd
@@ -147,7 +148,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   labels:
-    kops.k8s.io/cluster: taskapp.ayodave.is-a.dev
+    kops.k8s.io/cluster: taskapp.k8s.local
   name: nodes-us-east-1b
 spec:
   image: ami-0c101f26f147fa7fd
@@ -162,7 +163,7 @@ apiVersion: kops.k8s.io/v1alpha2
 kind: InstanceGroup
 metadata:
   labels:
-    kops.k8s.io/cluster: taskapp.ayodave.is-a.dev
+    kops.k8s.io/cluster: taskapp.k8s.local
   name: nodes-us-east-1c
 spec:
   image: ami-0c101f26f147fa7fd
