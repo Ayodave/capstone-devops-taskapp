@@ -1,5 +1,9 @@
 # Cloud-Native TaskApp Deployment
 
+![CI Pipeline](https://github.com/Ayodave/capstone-devops-taskapp/actions/workflows/ci.yaml/badge.svg)
+![Docker Backend](https://img.shields.io/docker/v/ayodavee/taskapp-backend?label=backend)
+![Docker Frontend](https://img.shields.io/docker/v/ayodavee/taskapp-frontend?label=frontend)
+
 Production Kubernetes deployment of TaskApp on AWS using
 Terraform, Kops, Helm and cert-manager.
 
@@ -20,6 +24,7 @@ to production-grade AWS infrastructure featuring:
 - Infrastructure as Code with Terraform
 - Kubernetes cluster management with Kops
 - Zero single points of failure
+- CI/CD with GitHub Actions
 
 ## Architecture
 
@@ -42,7 +47,8 @@ to production-grade AWS infrastructure featuring:
 - Ingress: NGINX Ingress Controller
 - SSL: cert-manager + Let's Encrypt
 - Secrets: Sealed Secrets (Bitnami)
-- Monitoring: kubectl + kops validate
+- CI/CD: GitHub Actions
+- Images: Docker Hub (ayodavee)
 
 ## Quickstart
 
@@ -67,7 +73,13 @@ to production-grade AWS infrastructure featuring:
     k8s/base/           Kubernetes manifests
     scripts/            deploy.sh and destroy.sh
     docs/               Architecture, runbook, cost analysis
+    .github/workflows/  CI/CD pipeline
     index.html          Live progress tracking page
+
+## Docker Images
+
+- Backend: docker.io/ayodavee/taskapp-backend:v1.0.0
+- Frontend: docker.io/ayodavee/taskapp-frontend:v1.0.0
 
 ## Documentation
 
@@ -82,8 +94,19 @@ to production-grade AWS infrastructure featuring:
 - Private subnet topology
 - IAM least privilege
 - MFA on AWS root account
+- Network policies enforced
 
 ## Author
 
 Ayodave — DevOps Capstone Project 2026
 GitHub: https://github.com/Ayodave
+Docker Hub: https://hub.docker.com/u/ayodavee
+- Private subnet topology
+- IAM least privilege
+- Network policies enforced
+
+## Author
+
+Ayodave - DevOps Capstone Project 2026
+GitHub: https://github.com/Ayodave
+Docker Hub: https://hub.docker.com/u/ayodavee
