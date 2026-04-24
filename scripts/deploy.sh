@@ -44,3 +44,16 @@ kubectl apply -f k8s/base/
 echo ""
 echo "=== Deployment Complete ==="
 echo "Run: kubectl get pods -n taskapp"
+echo ""
+echo "Step 6: Installing monitoring..."
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+kubectl apply -f k8s/base/monitoring-namespace.yaml
+helm install prometheus prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --values helm/prometheus-values.yaml \
+  --wait
+
+echo ""
+echo "Step 7: Running demo checks..."
+bash scripts/demo.sh
