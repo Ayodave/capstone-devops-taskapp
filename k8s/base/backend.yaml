@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: taskapp-backend:v1.0.0
+        image: ayodavee/taskapp-backend:v1.0.0
         ports:
         - containerPort: 5000
         env:

@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: taskapp-frontend:v1.0.0
+        image: ayodavee/taskapp-frontend:v1.0.0
         ports:
         - containerPort: 80
         env:
