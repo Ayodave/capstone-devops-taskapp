@@ -20,7 +20,6 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
     - name: Push backend image
       run: docker push ayodavee/taskapp-backend:v1.0.0
-
   build-frontend:
     runs-on: ubuntu-latest
     steps:
@@ -34,7 +33,6 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
     - name: Push frontend image
       run: docker push ayodavee/taskapp-frontend:v1.0.0
-
   validate-k8s:
     runs-on: ubuntu-latest
     steps:
