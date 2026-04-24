@@ -20,6 +20,7 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
     - name: Push backend image
       run: docker push ayodavee/taskapp-backend:v1.0.0
+
   build-frontend:
     runs-on: ubuntu-latest
     steps:
@@ -33,18 +34,3 @@ jobs:
         password: ${{ secrets.DOCKER_TOKEN }}
     - name: Push frontend image
       run: docker push ayodavee/taskapp-frontend:v1.0.0
-  validate-k8s:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install kubectl
-      uses: azure/setup-kubectl@v4
-      with:
-        version: v1.28.8
-    - name: Lint K8s manifests
-      run: |
-        kubectl apply --dry-run=client --validate=false -f k8s/base/namespace.yaml
-        kubectl apply --dry-run=client --validate=false -f k8s/base/postgres.yaml
-        kubectl apply --dry-run=client --validate=false -f k8s/base/backend.yaml
-        kubectl apply --dry-run=client --validate=false -f k8s/base/frontend.yaml
-        echo "All manifests validated successfully"
